@@ -1,0 +1,9 @@
+‚w‚d‚m‚n‚m `–²Œ¶‚Ìˆ‘Ì`
+XENON ~The limbs of phantasmagoria~ : Translation project
+=====
+
+To use just go into tools and run each step in order.
+
+3_insert.bat will bring up a directory and run DiskExplorer.  Just click OK to the selection (Anex86 HDD) and drag and drop all the CC files from scripts_build into the window.  Afterwards just run 4a_play_eng.bat and Neko Project will automatically run the game.
+
+Also included is the option to play the original Japanese version for comparison using 4b_play_jap.bat

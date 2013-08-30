@@ -1,0 +1,43 @@
+; These are soft patches intended for compression bypasses or
+; simple debugging tricks
+
+; TRAP - address to begin checking for patch insertion
+;        because of 286 prefetching, select an odd address (call/jmp/bra)
+;        before the target
+; CHECK - assert that these bytes are correct before inserting data
+; PATCH - change these bytes around
+; ADD - insert commands to list
+
+; Note:
+; 0xcc (INT 3) is a good 'NOP' command
+
+; ====================================================================
+; ********************************************************************
+; ********************************************************************
+; ====================================================================
+
+; TH02 Story of Eastern Wonderland
+
+; Remove 'INT 6' lock
+;[2:8f1b][28a8:049b] 0b c0                   or ax,ax            ax=0000 bx=7e38 cx=0fe4 dx=12c2 || bp=0ff8 sp=0ff8 si=12a4 di=12c2 || cs=28a8 ds=2b59 ss=2d8d es=0060 || vnZc
+;[2:8f1d][28a8:049d] 74 05                   jz 04a4h            ax=0000 bx=7e38 cx=0fe4 dx=12c2 || bp=0ff8 sp=0ff8 si=12a4 di=12c2 || cs=28a8 ds=2b59 ss=2d8d es=0060 || vnZc
+
+TRAP 28f10
+CHECK 28f10 55 8b ec 68 80 3e
+PATCH 28f1d 74 00
+;ADD
+
+; ====================================================================
+; ********************************************************************
+; ********************************************************************
+; ====================================================================
+
+; T03 (Phantasmagoria of Dim Dream)
+; - Does not work on PC-9801
+
+; Remove 'INT 6' lock
+
+TRAP 1730a
+CHECK 16aeb b9 0a 00 f3 a6 07 74 43
+PATCH 16af1 eb
+;ADD

@@ -1,0 +1,49 @@
+hook_pc1 1 -1 -1
+hook_pc2 1 -1 -1
+hook_pc3 1 -1 -1
+
+hook_rd1 1 A0000 A3FDF
+hook_rd2 1 -1 -1
+hook_rd3 1 -1 -1
+
+hook_wr1 1 A0000 A3FDF
+hook_wr2 1 -1 -1
+hook_wr3 1 -1 -1
+
+------------------------------------------------------
+
+PC98 x86
+
+Legend:
+- R/W (mode) <low> <high>
+ [hook.txt]  0 = Shadow address ($00-ff, $0000-ffff)
+ [hook.txt]  1 = Linear address ($000000-ffffff)
+
+ (tracing must be activated first)
+ [trace.txt] 2 = Shadow address ($00-ff, $0000-ffff)
+ [trace.txt] 3 = Linear address ($000000-ffffff)
+
+ Logging modes 4,5,6,7 will perform as 0-3 but will auto-enable tracing
+ when the breakpoint is reached.
+
+
+- PC <mode> <*> <*>
+ [hook.txt]  0 = <low linear> <high linear>
+ [hook.txt]  1 = <start linear> <stop linear>
+
+ (tracing must be activated first)
+ [trace.txt] 2 = <low linear> <high linear>
+ [trace.txt] 3 = <start linear> <stop linear>
+
+ Logging modes 4,5,6,7 will perform as 0-3 but will auto-enable tracing
+ when the breakpoint is reached.
+
+
+Tips:
+1. You can turn on memory / instruction logging BEFORE you run the program
+
+2. Toggle logging on/off several times to isolate just the piece of code you want
+
+3. Using hook_pc* <start> -1 will blindly log data starting from your address.
+   Useful for tracking math algorithms or hard-to-understand bugs.
+

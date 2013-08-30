@@ -1,0 +1,16 @@
+Features:
+- TAB	= fast-forward (toggle)
+
+- INS	= step-frame (single)
+- HOME	= normal frame
+
+- '.'	= dump RAM
+- ','	= (de)activate memory logging
+- '/'	= (de)activate instruction tracing
+
+(STAT) Save states
+(TOOLS) Cheats
+
+
+This is a PC-9801 emulator. Not a PC-9821.
+So it won't run the Touhou games or Policenauts.
